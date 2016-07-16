@@ -11,5 +11,5 @@ services:
     volumes:
       - ./workspace:/var/workspace
     environment:
-      URL: ${URL}
-      BRANCH: ${BRANCH}
+      CANONICAL: ${CANONICAL}
+      ORIGIN: ${ORIGIN}
