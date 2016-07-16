@@ -29,3 +29,4 @@ services:
       - 8080
       - 50000
     volumes:
+      - ./volumes/jenkins:/var/jenkins_home
