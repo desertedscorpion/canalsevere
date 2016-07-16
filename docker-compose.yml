@@ -5,4 +5,11 @@ services:
     volumes:
       - ./workspace:/var/workspace
     ports:
-      - 28080:8080
+      - 8080
+  git:
+    build: dockers/git
+    volumes:
+      - ./workspace:/var/workspace
+    env:
+      URL: ${URL}
+      BRANCH: ${BRANCH}
