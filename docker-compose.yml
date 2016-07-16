@@ -15,3 +15,9 @@ services:
     environment:
       CANONICAL: ${CANONICAL}
       ORIGIN: ${ORIGIN}
+  gitlab:
+    image: gitlab/gitlab-ce:8.9.6-ce.0
+    ports:
+      - 443
+      - 80
+      - 22
