@@ -1,0 +1,17 @@
+version: "2"
+services:
+  cloud9:
+    build: dockers/cloud9
+    volumes:
+      - ./workspace:/var/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080
+    privileged: true
+  git:
+    build: dockers/git
+    volumes:
+      - ./workspace:/var/workspace
+    environment:
+      CANONICAL: ${CANONICAL}
+      ORIGIN: ${ORIGIN}
