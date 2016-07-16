@@ -10,5 +10,5 @@ CMD \
     git -C /var/workspace init && \
     git -C /var/workspace remote add canonical ${CANONICAL} && \
     git -C /var/workspace remote add origin ${ORIGIN} && \
-    git remote set-url --push canonical no-pushing
+    git -C /var/workspace remote set-url --push canonical no-pushing
     
