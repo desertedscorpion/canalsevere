@@ -7,6 +7,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8080
+    links:
+      - gitlab
+      - jenkins
     privileged: true
   git:
     build: dockers/git
@@ -17,7 +20,23 @@ services:
       ORIGIN: ${ORIGIN}
   gitlab:
     image: gitlab/gitlab-ce:8.9.6-ce.0
+    volumes:
+      - ./volumes/gitlab/data:/srv/gitlab/data
+      - ./volumes/gitlab/logs:/srv/gitlab/logs
+      - ./volumes/gitlab/gitlab:/etc/gitlab
     ports:
       - 443
       - 80
       - 22
+    links:
+      - jenkins
+  jenkins:
+    image: jenkins:2.7.1-alpine
+    ports:
+      - 8080
+      - 50000
+    volumes:
+      - ./volumes/jenkins:/var/jenkins_home
+    links:
+      - gitlab
+      
