@@ -12,7 +12,12 @@ RUN \
     dnf install --assumeyes docker docker-compose && \
     dnf update --assumeyes && \
     dnf clean all
-VOLUME /var/workspace
-VOLUME /var/run/docker.sock
 EXPOSE 8080
-CMD node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password 
+CMD \
+    mkdir /root/.ssh && \
+    chmod 0700 /root/.ssh && \
+    git -C /var/workspace init && \
+    git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
+    git -C /var/workspace remote add origin ${ORIGIN_URL} && \
+    git -C /var/workspace remote set-url --push canonical no-pushing && \
+    node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password 

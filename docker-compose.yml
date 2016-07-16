@@ -1,23 +1,18 @@
 version: "2"
 services:
-  cloud9:
+  canalsevere:
     build: dockers/cloud9
     volumes:
-      - ./workspace:/var/workspace
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8080
     links:
       - gitlab
       - jenkins
-    privileged: true
-  git:
-    build: dockers/git
-    volumes:
-      - ./workspace:/var/workspace
     environment:
-      CANONICAL: ${CANONICAL}
-      ORIGIN: ${ORIGIN}
+      - CANONICAL_URL="git@github.com:desertedscorpion/canalsevere.git"
+      - ORIGIN_URL="git@github.com:desertedscorpion/canalsevere.git"
+    privileged: true
   gitlab:
     image: gitlab/gitlab-ce:8.9.6-ce.0
     volumes:
