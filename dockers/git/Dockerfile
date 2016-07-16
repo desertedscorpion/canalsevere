@@ -9,6 +9,7 @@ ENV CANONICAL="canonical" ORIGIN="origin"
 CMD \
     git -C /var/workspace init && \
     git -C /var/workspace remote add canonical ${CANONICAL} && \
+    echo ORIGIN=${ORIGIN} && \
     git -C /var/workspace remote add origin ${ORIGIN} && \
     git -C /var/workspace remote set-url --push canonical no-pushing
     
