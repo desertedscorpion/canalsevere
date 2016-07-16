@@ -23,13 +23,9 @@ services:
       - 443
       - 80
       - 22
-    links:
   jenkins:
     image: jenkins:2.7.1-alpine
     ports:
       - 8080
       - 50000
     volumes:
-    links:
-      - gitlab
-      
