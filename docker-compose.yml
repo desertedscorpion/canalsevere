@@ -1,0 +1,6 @@
+version: "2"
+services:
+  cloud9:
+    dockerfile: dockers/cloud9
+    volumes:
+      ./workspace:/var/workspace
