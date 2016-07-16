@@ -1,5 +1,5 @@
 FROM fedora:23
-RUN 
+RUN \
     dnf update --assumeyes && \
     dnf install --assumeyes coreutils git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs npm && \
     mkdir /opt/c9sdk && \
