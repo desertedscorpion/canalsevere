@@ -4,6 +4,7 @@ services:
     build: dockers/cloud9
     volumes:
       - ./workspace:/var/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8080
     privileged: true
