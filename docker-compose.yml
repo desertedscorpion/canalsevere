@@ -10,6 +10,6 @@ services:
     build: dockers/git
     volumes:
       - ./workspace:/var/workspace
-    env:
+    environment:
       URL: ${URL}
       BRANCH: ${BRANCH}
