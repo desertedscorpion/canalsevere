@@ -2,7 +2,7 @@ version: "2"
 services:
   cloud9:
     build: dockers/cloud9
-    ports:
-      - 28080:8080
     volumes:
       - ./workspace:/var/workspace
+    ports:
+      - 28080:8080
