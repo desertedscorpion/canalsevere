@@ -3,4 +3,6 @@ services:
   cloud9:
     dockerfile: dockers/cloud9
     volumes:
-      ./workspace:/var/workspace
+      - ./workspace:/var/workspace
+    ports:
+      - 28080:8080
