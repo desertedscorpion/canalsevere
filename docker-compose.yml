@@ -6,6 +6,7 @@ services:
       - ./workspace:/var/workspace
     ports:
       - 8080
+    privileged: true
   git:
     build: dockers/git
     volumes:
