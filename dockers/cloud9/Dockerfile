@@ -10,7 +10,6 @@ RUN \
     /opt/c9sdk/scripts/install-sdk.sh && \
     curl --insecure https://gitlab.363-283.io/emory.merryman/c9-install/raw/master/install.sh | bash && \
     dnf install --assumeyes docker docker-compose && \
-    chmod 0700 /root/.ssh && \
     mkdir /var/workspace && \
     git -C /var/workspace init && \
     dnf update --assumeyes && \
