@@ -11,10 +11,10 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - personal_id_rsa:/opt/personal/id_rsa
-      - jenkins_home:/opt/jenkins/home:ro
-      - gitlab_config:/opt/gitlab/config:ro
-      - gitlab_data:/opt/gitlab/data:ro
-      - gitlab_log:/opt/gitlab/log:ro
+      - jenkins_home:/opt/jenkins/home
+      - gitlab_config:/opt/gitlab/config
+      - gitlab_data:/opt/gitlab/data
+      - gitlab_log:/opt/gitlab/log
     ports:
       - 8080
     links:
