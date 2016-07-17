@@ -14,7 +14,6 @@ RUN \
     git -C /var/workspace init && \
     dnf update --assumeyes && \
     dnf clean all
-COPY post-commit.sh /var/workspace/.git/hooks/
 EXPOSE 8080
 CMD \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
