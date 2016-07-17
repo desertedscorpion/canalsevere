@@ -1,6 +1,8 @@
 version: "2"
 volumes:
   personal_id_rsa:
+  personal_gpg_secret_key:
+  personal_gpg_owner_trust:
   jenkins_home:
   gitlab_config:
   gitlab_data:
