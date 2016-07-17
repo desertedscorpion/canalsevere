@@ -12,9 +12,11 @@ RUN \
     dnf install --assumeyes docker docker-compose && \
     mkdir /var/workspace && \
     git -C /var/workspace init && \
+    ln --symbolic --force /root/bin/post-commit.sh /var/workspace/.git/hooks/post-commit && \
+    echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
     dnf update --assumeyes && \
     dnf clean all
-COPY post-commit.sh /var/workspace/.git/hooks/
+COPY post-commit.sh bash-prompt.sh /root/bin
 EXPOSE 8080
 CMD \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
