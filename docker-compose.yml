@@ -18,10 +18,6 @@ services:
     privileged: true
   gitlab:
     image: gitlab/gitlab-ce:8.9.6-ce.0
-    volumes:
-      - ./volumes/gitlab/data:/var/opt/gitlab
-      - ./volumes/gitlab/logs:/var/log/gitlab
-      - ./volumes/gitlab/gitlab:/etc/gitlab
     ports:
       - 443
       - 80
