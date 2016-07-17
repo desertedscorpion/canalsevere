@@ -11,6 +11,8 @@ services:
       - gitlab
       - jenkins
     environment:
+      - EMAIL=emory.merryman@gmail.com
+      - NAME=Emory Merryman
       - CANONICAL_URL=git@github.com:desertedscorpion/canalsevere.git
       - ORIGIN_URL=git@github.com:desertedscorpion/canalsevere.git
     privileged: true

@@ -20,6 +20,8 @@ RUN \
 COPY post-commit.sh bash-prompt.sh scratch.sh /root/bin/
 EXPOSE 8080
 CMD \
+    git -C /var/workspace config user.email "${EMAIL}" && \
+    git -C /var/workspace config user.name "${NAME}" && \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
     git -C /var/workspace remote add origin ${ORIGIN_URL} && \
     git -C /var/workspace remote set-url --push canonical no-pushing && \
