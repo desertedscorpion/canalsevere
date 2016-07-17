@@ -14,7 +14,6 @@ RUN \
     git -C /var/workspace init && \
     ln --symbolic --force /root/bin/post-commit.sh /var/workspace/.git/hooks/post-commit && \
     echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
-    ln --symbolic --force /root/bin/scratch.sh /root/bin/scratch && \
     dnf update --assumeyes && \
     dnf clean all
 COPY post-commit.sh bash-prompt.sh scratch.sh /root/bin/
@@ -25,4 +24,5 @@ CMD \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
     git -C /var/workspace remote add origin ${ORIGIN_URL} && \
     git -C /var/workspace remote set-url --push canonical no-pushing && \
+    ln --symbolic --force /root/bin/scratch.sh /root/bin/scratch && \
     node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password
