@@ -11,8 +11,8 @@ services:
       - gitlab
       - jenkins
     environment:
-      - CANONICAL_URL="git@github.com:desertedscorpion/canalsevere.git"
-      - ORIGIN_URL="git@github.com:desertedscorpion/canalsevere.git"
+      - CANONICAL_URL=git@github.com:desertedscorpion/canalsevere.git
+      - ORIGIN_URL=git@github.com:desertedscorpion/canalsevere.git
     privileged: true
   gitlab:
     image: gitlab/gitlab-ce:8.9.6-ce.0
