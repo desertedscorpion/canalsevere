@@ -11,13 +11,14 @@ RUN \
     curl --insecure https://gitlab.363-283.io/emory.merryman/c9-install/raw/master/install.sh | bash && \
     dnf install --assumeyes docker docker-compose && \
     chmod 0700 /root/.ssh && \
+    mkdir /var/workspace && \
+    git -C /var/workspace init && \
     dnf update --assumeyes && \
     dnf clean all
+COPY post-commit.sh /var/workspace/.git/hooks
 EXPOSE 8080
 CMD \
-    WORKSPACE=$(mktemp -d) && \
-    git -C ${WORKSPACE} init && \
-    git -C ${WORKSPACE} remote add canonical ${CANONICAL_URL} && \
-    git -C ${WORKSPACE} remote add origin ${ORIGIN_URL} && \
-    git -C ${WORKSPACE} remote set-url --push canonical no-pushing && \
-    node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "${WORKSPACE}" -p 8080 --auth user:password --dump > /tmp/cloud9.settings.json
+    git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
+    git -C /var/workspace remote add origin ${ORIGIN_URL} && \
+    git -C /var/workspace remote set-url --push canonical no-pushing && \
+    node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password --dump > /tmp/cloud9.settings.json
