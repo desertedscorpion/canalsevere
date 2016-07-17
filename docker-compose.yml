@@ -1,4 +1,9 @@
 version: "2"
+volumes:
+  jenkins_home:
+  gitlab_config:
+  gitlab_data:
+  gitlab_log:
 services:
   canalsevere:
     build: dockers/cloud9
@@ -18,6 +23,10 @@ services:
     privileged: true
   gitlab:
     image: gitlab/gitlab-ce:8.9.6-ce.0
+    volumes:
+      - gitlab_data:/var/opt/gitlab
+      - gitlab_log:/var/log/gitlab
+      - gitlab_config:/etc/gitlab
     ports:
       - 443
       - 80

@@ -12,11 +12,13 @@ RUN \
     dnf install --assumeyes docker docker-compose && \
     mkdir /var/workspace && \
     git -C /var/workspace init && \
+    mkdir /root/.ssh && \
+    chmod 0700 /root/.ssh && \
     ln --symbolic --force /root/bin/post-commit.sh /var/workspace/.git/hooks/post-commit && \
     echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
     dnf update --assumeyes && \
     dnf clean all
-COPY post-commit.sh bash-prompt.sh scratch.sh /root/bin/
+COPY post-commit.sh bash-prompt.sh scratch.sh merge-request.sh /root/bin/
 EXPOSE 8080
 CMD \
     git -C /var/workspace config user.email "${EMAIL}" && \
@@ -24,5 +26,6 @@ CMD \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
     git -C /var/workspace remote add origin ${ORIGIN_URL} && \
     git -C /var/workspace remote set-url --push canonical no-pushing && \
-    ln --symbolic --force /root/bin/scratch.sh /root/bin/scratch && \
+    ln --symbolic --force /root/bin/scratch.sh /root/bin/git-scratch && \
+    ln --symbolic --force /root/bin/scratch.sh /root/bin/git-merge-request && \
     node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password
