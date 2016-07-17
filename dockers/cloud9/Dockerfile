@@ -10,12 +10,13 @@ RUN \
     /opt/c9sdk/scripts/install-sdk.sh && \
     curl --insecure https://gitlab.363-283.io/emory.merryman/c9-install/raw/master/install.sh | bash && \
     dnf install --assumeyes docker docker-compose && \
+    mkdir /root/.ssh && \
+    chmod 0700 /root/.ssh && \
     dnf update --assumeyes && \
     dnf clean all
 EXPOSE 8080
 CMD \
-    mkdir /root/.ssh && \
-    chmod 0700 /root/.ssh && \
+    chmod 0600 /root/.ssh/id_rsa && \
     WORKSPACE=$(mktemp -d) && \
     git -C ${WORKSPACE} init && \
     git -C ${WORKSPACE} remote add canonical ${CANONICAL_URL} && \
