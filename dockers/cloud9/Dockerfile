@@ -16,7 +16,7 @@ RUN \
     chmod 0700 /root/.ssh && \
     ln --symbolic --force /root/bin/post-commit.sh /var/workspace/.git/hooks/post-commit && \
     echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
-    dnf install --assumeyes gpg gpg2 && \
+    dnf install --assumeyes gnupg gnupg2 && \
     dnf update --assumeyes && \
     dnf clean all
 COPY post-commit.sh bash-prompt.sh scratch.sh merge-request.sh /root/bin/
