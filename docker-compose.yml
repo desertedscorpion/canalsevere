@@ -37,7 +37,7 @@ services:
       - 80
       - 22
   jenkins:
-    image: jenkins:2.7.1-alpine
+    build: dockers/jenkins
     ports:
       - 8080
       - 50000
