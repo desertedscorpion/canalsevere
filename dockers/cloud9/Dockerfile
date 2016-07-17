@@ -16,7 +16,7 @@ RUN \
     echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
     dnf update --assumeyes && \
     dnf clean all
-COPY post-commit.sh bash-prompt.sh /root/bin
+COPY post-commit.sh bash-prompt.sh /root/bin/
 EXPOSE 8080
 CMD \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
