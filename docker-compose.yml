@@ -1,5 +1,6 @@
 version: "2"
 volumes:
+  personal_id_rsa:
   jenkins_home:
   gitlab_config:
   gitlab_data:
@@ -9,7 +10,11 @@ services:
     build: dockers/cloud9
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+      - personal_id_rsa:/opt/personal/id_rsa
+      - jenkins_home:/opt/jenkins/home:ro
+      - gitlab_config:/opt/gitlab/config:ro
+      - gitlab_data:/opt/gitlab/data:ro
+      - gitlab_log:/opt/gitlab/log:ro
     ports:
       - 8080
     links:
