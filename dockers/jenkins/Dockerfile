@@ -7,6 +7,6 @@ RUN \
     echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers && \
     apt-get -y install python-pip && \
     pip install docker-compose && \
-    usermod -a -G jenkins docker && \
+    usermod -a -G docker jenkins && \
     apt-get update
 USER jenkins
