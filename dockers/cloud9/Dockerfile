@@ -16,6 +16,7 @@ RUN \
     chmod 0700 /root/.ssh && \
     ln --symbolic --force /root/bin/post-commit.sh /var/workspace/.git/hooks/post-commit && \
     echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
+    dnf install --assumeyes gpg gpg2 && \
     dnf update --assumeyes && \
     dnf clean all
 COPY post-commit.sh bash-prompt.sh scratch.sh merge-request.sh /root/bin/
@@ -30,4 +31,7 @@ CMD \
     chmod 0600 /root/.ssh/id_rsa && \
     ln --symbolic --force /root/bin/scratch.sh /root/bin/git-scratch && \
     ln --symbolic --force /root/bin/scratch.sh /root/bin/git-merge-request && \
+    # gpg --allow-secret-key --import /opt/personal/gpg/secret_key/secret.key && \
+    # gpg2 --allow-secret-key --import /opt/personal/gpg/secret_key/secret.key && \
+    # gpg --import-ownertrust /opt/personal/gpg/owner_trust/owner.trust && \
     node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password
