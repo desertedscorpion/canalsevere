@@ -20,4 +20,4 @@ CMD \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
     git -C /var/workspace remote add origin ${ORIGIN_URL} && \
     git -C /var/workspace remote set-url --push canonical no-pushing && \
-    node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password --dump > /tmp/cloud9.settings.json
+    node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password
