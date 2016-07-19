@@ -27,8 +27,8 @@ CMD \
     git -C /var/workspace remote add canonical ${CANONICAL_URL} && \
     git -C /var/workspace remote add origin ${ORIGIN_URL} && \
     git -C /var/workspace remote set-url --push canonical no-pushing && \
-    cp /opt/personal/id_rsa/id_rsa /root/.ssh/id_rsa && \
-    chmod 0600 /root/.ssh/id_rsa && \
+    # cp /opt/personal/private/id_rsa /root/.ssh/id_rsa && \
+    # chmod 0600 /root/.ssh/id_rsa && \
     ln --symbolic --force /root/bin/scratch.sh /root/bin/git-scratch && \
     ln --symbolic --force /root/bin/scratch.sh /root/bin/git-merge-request && \
     # gpg --allow-secret-key --import /opt/personal/gpg/secret_key/secret.key && \
