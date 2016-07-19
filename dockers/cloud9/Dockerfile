@@ -31,7 +31,7 @@ CMD \
     chmod 0600 /root/.ssh/id_rsa && \
     ln --symbolic --force /root/bin/scratch.sh /root/bin/git-scratch && \
     ln --symbolic --force /root/bin/scratch.sh /root/bin/git-merge-request && \
-    gpg --allow-secret-key --import /opt/personal/private/secret_key && \
-    gpg2 --allow-secret-key --import /opt/personal/private/secret_key && \
-    gpg --import-ownertrust /opt/personal/private/owner_trust && \
+    # gpg --allow-secret-key --import /opt/personal/private/secret_key && \
+    # gpg2 --allow-secret-key --import /opt/personal/private/secret_key && \
+    # gpg --import-ownertrust /opt/personal/private/owner_trust && \
     node "/opt/c9sdk/server.js" --listen 0.0.0.0 -w "/var/workspace" -p 8080 --auth user:password
