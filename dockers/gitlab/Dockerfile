@@ -8,4 +8,3 @@ RUN \
     pip install --upgrade pip && \
     pip install docker-compose && \
     apt-get update
-USER jenkins
