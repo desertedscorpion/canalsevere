@@ -1,0 +1,5 @@
+before_script:
+  apt-get update
+
+build_machines:
+  docker-compose build canalsevere gitlab jenkins
