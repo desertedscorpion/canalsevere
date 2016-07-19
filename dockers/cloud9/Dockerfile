@@ -19,6 +19,7 @@ RUN \
     echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
     dnf install --assumeyes gnupg gnupg2 && \
     dnf install --assumeyes pass && \
+    dnf install --assumeyes man && \
     dnf update --assumeyes && \
     dnf clean all
 COPY post-commit.sh bash-prompt.sh scratch.sh merge-request.sh /root/bin/

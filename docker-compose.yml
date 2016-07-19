@@ -53,8 +53,9 @@ services:
       - ORIGIN_URL=git@gitlab:bravemicrophone/goldencoffin.git
     privileged: true
   gitlab:
-    image: gitlab/gitlab-ce:8.9.6-ce.0
+    build: dockers/gitlab
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - gitlab_data:/var/opt/gitlab
       - gitlab_log:/var/log/gitlab
       - gitlab_config:/etc/gitlab
@@ -62,6 +63,7 @@ services:
       - 443
       - 80
       - 22
+    privileged: true
   jenkins:
     build: dockers/jenkins
     ports:
