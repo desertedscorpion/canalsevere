@@ -7,6 +7,5 @@ RUN \
     apt-get -y install python-pip && \
     pip install --upgrade pip && \
     pip install docker-compose && \
-    usermod -a -G docker jenkins && \
     apt-get update
 USER jenkins
