@@ -14,9 +14,11 @@ RUN \
     git -C /var/workspace init && \
     mkdir /root/.ssh && \
     chmod 0700 /root/.ssh && \
+    dnf install --assumeyes gitflow bash-completion git-extras docker-zsh-completion docker-fish-completion && \
     ln --symbolic --force /root/bin/post-commit.sh /var/workspace/.git/hooks/post-commit && \
     echo "source /root/bin/bash-prompt.sh" > /root/.bashrc && \
     dnf install --assumeyes gnupg gnupg2 && \
+    dnf install --assumeyes pass && \
     dnf update --assumeyes && \
     dnf clean all
 COPY post-commit.sh bash-prompt.sh scratch.sh merge-request.sh /root/bin/
