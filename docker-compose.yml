@@ -14,7 +14,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - personal_private:/opt/personal/private
-      - personal_gpg_owner_trust:/opt/personal/gpg/owner_trust
       - jenkins_home:/opt/jenkins/home
       - gitlab_config:/opt/gitlab/config
       - gitlab_data:/opt/gitlab/data
@@ -34,9 +33,7 @@ services:
     build: dockers/cloud9
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - personal_id_rsa:/opt/personal/id_rsa
-      - personal_gpg_secret_key:/opt/personal/gpg/secret_key
-      - personal_gpg_owner_trust:/opt/personal/gpg/owner_trust
+      - personal_private:/opt/personal/private
       - jenkins_home:/opt/jenkins/home
       - gitlab_config:/opt/gitlab/config
       - gitlab_data:/opt/gitlab/data
