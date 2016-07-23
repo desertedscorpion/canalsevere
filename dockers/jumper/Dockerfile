@@ -6,4 +6,6 @@ RUN \
     dnf clean all
 CMD \
     cd /usr/local/src && \
+    echo hi && \
+    pwd && \
     docker-compose runner gitlab-runner register
