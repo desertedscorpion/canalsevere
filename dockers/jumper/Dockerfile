@@ -11,4 +11,5 @@ RUN \
 CMD \
     cd /usr/local/src && \
     ls -lh && \
-    docker-compose exec runner gitlab-runner register
+    bash && \
+    echo docker-compose exec runner gitlab-runner register
