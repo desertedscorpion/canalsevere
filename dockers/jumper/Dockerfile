@@ -1,6 +1,9 @@
 FROM fedora:23
-CMD \
+RUN \
     dnf update --assumeyes && \
     dnf install --assumeyes docker docker-compose && \
     dnf update --assumeyes && \
     dnf clean all
+CMD \
+    cd /usr/local/src && \
+    docker-compose runner gitlab-runner register
