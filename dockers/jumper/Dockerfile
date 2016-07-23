@@ -1,6 +1,8 @@
 FROM fedora:23
 RUN \
     dnf update --assumeyes && \
+    curl -fsSL https://get.docker.com/ | sh && \
+    dnf update --assumeyes && \
     dnf install --assumeyes docker docker-compose && \
     dnf update --assumeyes && \
     dnf clean all
@@ -8,5 +10,4 @@ CMD \
     cd /usr/local/src && \
     echo hi && \
     pwd && \
-    docker images && \
     docker-compose exec runner gitlab-runner register
