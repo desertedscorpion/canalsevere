@@ -17,7 +17,7 @@ services:
       - runner_config:/etc/gitlab-runner
     privileged: true
   jumper:
-    image: docker/jumper
+    build: docker/jumper
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - .:/usr/local/src:ro
