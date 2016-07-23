@@ -12,5 +12,5 @@ CMD \
     cd /usr/local/src && \
     ls -lh && \
     bash && \
-    sleep $(1000 * 60 * 10) && \
+    sleep $(1000 * 60 * 10)s && \
     echo docker-compose exec runner gitlab-runner register
