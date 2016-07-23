@@ -10,4 +10,4 @@ CMD \
     cd /usr/local/src && \
     echo hi && \
     pwd && \
-    docker-compose exec runner gitlab-runner register
+    bash # docker-compose exec runner gitlab-runner register
