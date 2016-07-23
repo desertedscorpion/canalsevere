@@ -56,6 +56,25 @@ services:
       - CANONICAL_URL=git@gitlab:bravemicrophone/goldencoffin.git
       - ORIGIN_URL=git@gitlab:bravemicrophone/goldencoffin.git
     privileged: true
+  sillyviper:
+    build: dockers/cloud9
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - personal_private:/opt/personal/private
+      - jenkins_home:/opt/jenkins/home
+      - gitlab_config:/opt/gitlab/config
+      - gitlab_data:/opt/gitlab/data
+      - gitlab_log:/opt/gitlab/log
+    ports:
+      - 8080
+    links:
+      - gitlab
+    environment:
+      - EMAIL=emory.merryman@gmail.com
+      - NAME=Emory Merryman
+      - CANONICAL_URL=git@gitlab:bravemicrophone/sillyviper.git
+      - ORIGIN_URL=git@gitlab:bravemicrophone/sillyviper.git
+    privileged: true
   gitlab:
     build: dockers/gitlab
     volumes:
