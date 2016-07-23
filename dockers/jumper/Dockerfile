@@ -8,4 +8,4 @@ CMD \
     cd /usr/local/src && \
     echo hi && \
     pwd && \
-    docker-compose runner exec gitlab-runner register
+    docker-compose exec runner gitlab-runner register
