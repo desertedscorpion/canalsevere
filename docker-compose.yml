@@ -21,6 +21,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - .:/usr/local/src:ro
+    privileged: true
   canalsevere:
     build: dockers/cloud9
     volumes:

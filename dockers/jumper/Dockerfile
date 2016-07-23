@@ -8,4 +8,5 @@ CMD \
     cd /usr/local/src && \
     echo hi && \
     pwd && \
+    docker images && \
     docker-compose exec runner gitlab-runner register
