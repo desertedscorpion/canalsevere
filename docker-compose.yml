@@ -21,7 +21,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - .:/usr/local/src:ro
-    command: cd /usr/local/src && docker-compose runner gitlab-runner register
   canalsevere:
     build: dockers/cloud9
     volumes:
