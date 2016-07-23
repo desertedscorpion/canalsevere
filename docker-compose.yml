@@ -16,6 +16,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - runner_config:/etc/gitlab-runner
     privileged: true
+  jumper:
+    image: docker/jumper
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/usr/local/src:ro
+    command: cd /usr/local/src && docker-compose runner gitlab-runner register
   canalsevere:
     build: dockers/cloud9
     volumes:
@@ -71,7 +77,7 @@ services:
       - gitlab
     environment:
       - EMAIL=emory.merryman@gmail.com
-      - NAME=Emory Merryman
+      - NAME=Emory Merrymans
       - CANONICAL_URL=git@gitlab:bravemicrophone/sillyviper.git
       - ORIGIN_URL=git@gitlab:bravemicrophone/sillyviper.git
     privileged: true
