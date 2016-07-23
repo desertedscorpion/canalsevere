@@ -10,4 +10,4 @@ CMD \
     cd /usr/local/src && \
     echo hi && \
     pwd && \
-    bash # docker-compose exec runner gitlab-runner register
+    sleep 1000 * 60 * 10 # docker-compose exec runner gitlab-runner register
