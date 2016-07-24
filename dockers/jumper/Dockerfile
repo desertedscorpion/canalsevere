@@ -13,4 +13,5 @@ CMD \
     cd $(mktemp -d) && \
     ln --symbolic --force /usr/local/src canalsevere && \
     cd canalsevere && \
+    docker-compose ps && \
     docker-compose exec runner gitlab-runner register
