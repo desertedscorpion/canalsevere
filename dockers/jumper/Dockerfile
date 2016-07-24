@@ -10,7 +10,7 @@ RUN \
     dnf clean all
 CMD \
     cd /usr/local/src && \
-    ls -lh && \
-    bash && \
-    sleep $((1000 * 60 * 10))s && \
-    echo docker-compose exec runner gitlab-runner register
+    cd $(mktemp -d) && \
+    ln --symbolic --force /usr/local/src canalsevere && \
+    cd canalsevere && \
+    docker-compose exec runner gitlab-runner register
