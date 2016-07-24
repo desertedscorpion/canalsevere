@@ -11,7 +11,7 @@ volumes:
   runner_config:
 services:
   runner:
-    image: gitlab/gitlab-runner:latest
+    build: dockers/runner
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - runner_config:/etc/gitlab-runner

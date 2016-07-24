@@ -1,10 +1,16 @@
-FROM fedora:23
+FROM gitlab/gitlab-runner:v1.4.0
 RUN \
-    dnf update --assumeyes && \
-    dnf install --assumeyes dnf docker && \
-    curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh | bash && \
-    dnf update --assumeyes && \
-    dnf install --assumeyes gitlab-ci-multi-runner && \
-    dnf update --assumeyes
-CMD \
-    gitlab-runner register
+    apt-get update && \
+    apt-get install -y -y apt-transport-https ca-certificates && \
+    apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+    ls /etc/apt/sources.list.d/docker.list && \
+    [ ! -f /etc/apt/sources.list.d/docker.list ] && \
+    echo deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list && \
+    apt-get update \ &&
+    apt-get purge lxc-docker && \
+    apt-cache policy docker-engine && \
+    apt-get update && \
+    apt-get install -y linux-image-extra-$(uname -r) && \
+    apt-get install -y docker-engine && \
+    apt-get update && \
+    apt-get clean
