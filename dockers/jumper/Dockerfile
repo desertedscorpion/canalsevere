@@ -15,5 +15,6 @@ CMD \
     cd canalsevere && \
     pwd && \
     ls -lh && \
-    docker-compose ps && \
-    docker-compose exec runner gitlab-runner register
+    echo docker-compose ps && \
+    echo docker-compose exec runner gitlab-runner register && \
+    sleep $((60*10))s
