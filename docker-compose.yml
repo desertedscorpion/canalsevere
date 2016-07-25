@@ -9,12 +9,14 @@ volumes:
   gitlab_data:
   gitlab_log:
   runner_config:
+  runner_recordmydesktop:
 services:
   runner:
     build: dockers/runner
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - runner_config:/etc/gitlab-runner
+      - runner_recordmydesktop:/srv/recordmydesktop
     privileged: true
   jumper:
     build: dockers/jumper
@@ -31,6 +33,7 @@ services:
       - gitlab_config:/opt/gitlab/config
       - gitlab_data:/opt/gitlab/data
       - gitlab_log:/opt/gitlab/log
+      - runner_recordmydesktop:/opt/runner/recordmydestkop
     ports:
       - 8080
     links:
