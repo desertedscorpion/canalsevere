@@ -6,6 +6,7 @@ volumes:
   personal_gpg_owner_trust:
   personal_gnupg:
   personal_password:
+  personal_ssh:
   jenkins_home:
   gitlab_config:
   gitlab_data:
@@ -38,6 +39,7 @@ services:
       - runner_recordmydesktop:/opt/runner/recordmydestkop
       - personal_gnupg:/opt/personal/gnupg
       - personal_password:/opt/personal/password
+      - personal_ssh:/opt/personal/ssh
     ports:
       - 8080
     links:
